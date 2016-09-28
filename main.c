@@ -8,28 +8,41 @@ Team Members:
 #include <stdlib.h>
 #include <assert.h>
 
-int main(int argc, char** argv) {
+int main(int argc, char *argv) {
     
-    FILE *ifp;
-    FILE *ofp;
+    FILE *keyFile;
+    FILE *inputFile;
+    FILE *outputFile;
     char inputChar;
     char outputChar;
-    char prevChar;
-    int i;
-
-    if (argc < 3) printf("Input and output files need to be specified\n");
-    ifp = fopen(argv[1], "r");
-    ofp = fopen(argv[2], "w");
-
-    assert(ifp != NULL);
-    assert(ofp != NULL);
-
-
-     while ((inputChar = fgetc(ifp))!=EOF) {
-       fputc(inputChar, ofp);
-     }
-    fclose(ifp);
-    fclose(ofp);
-
+    int key[];
+    int S[256];
+    int T[256];
+    
+    if (argc < 3) printf("Input, output, and key files need to be specified\n");
+    
+    keyFile = fopen(argv[1], "r");
+    inputFile = fopen(argv[2], "r");
+    outputFile = fopen(argv[3], "w");
+    
+    initKey(keyFile,)
+    
+    fclose(keyFile);
+    fclose(inputFile);
+    fclose(outputFile);
 }
 
+void swap(char x, char y) {
+    char temp = x;
+    x = y;
+    y = temp;
+}
+
+void initKey(FILE fileRead, int[] keyArray) {
+    char tempCh;
+    int i = 0;
+    while ((tempCh = fgetc(fileRead)) != EOF && i < 256) {
+        keyArray[i] = tempCh;
+        i++;
+    }
+}
