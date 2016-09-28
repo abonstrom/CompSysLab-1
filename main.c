@@ -16,6 +16,7 @@ int main(int argc, char *argv) {
     char inputChar;
     char outputChar;
     int key[];
+    int kLength;
     int S[256];
     int T[256];
     
@@ -25,7 +26,9 @@ int main(int argc, char *argv) {
     inputFile = fopen(argv[2], "r");
     outputFile = fopen(argv[3], "w");
     
-    initKey(keyFile,)
+    initKey(keyFile, key);
+    
+    kLength = sizeof(key)/sizeof(int);
     
     fclose(keyFile);
     fclose(inputFile);
