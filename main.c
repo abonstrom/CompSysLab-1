@@ -49,3 +49,16 @@ void initKey(FILE fileRead, int[] keyArray) {
         i++;
     }
 }
+
+char generateKeyByte(char s[]) {
+    static int i=0;
+    static int j=0;
+    
+    i=(i+1) % 256;
+    j = (j+S[i]) % 256;
+    swap(S[i] + S[j]);
+    t = (S[i] + S[j]) % 256;
+    return keyByte = S[t];
+           
+            
+}
