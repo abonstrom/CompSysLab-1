@@ -7,6 +7,9 @@ Team Members:
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+void swap(char x, char y);
+void initKey(FILE fileRead, int[] keyArray);
+char generateKeyByte(char s[]);
 
 char S[256];
 char T[256];
