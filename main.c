@@ -29,13 +29,18 @@ int main(int argc, char *argv[]) {
     inputFile = fopen(argv[2], "r");
     outputFile = fopen(argv[3], "w");
     
-    char *Pkey;
-    Pkey= &key[0]
-            
     int kLength=0;
-    kLength = initKey(keyFile, Pkey);
+    //checks next char in keyFile and if it is not EOF or over 256 then add one to length 
+    while((int inputChar = fgetc(keyFile)) != EOF && kLength<256){
+        kLength++;
+    }
+  
     
-    printf("%i", kLength);
+            
+    
+   
+    
+    
    // kLength = sizeof(key)/sizeof(int);
     
     int i = 0;
