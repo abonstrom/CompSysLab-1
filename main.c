@@ -23,26 +23,19 @@ int main(int argc, char *argv[]) {
     FILE *outputFile;
    
        
-   // if (argc < 3) printf("Input, output, and key files need to be specified\n");
+   if (argc < 3) printf("Input, output, and key files need to be specified\n");
         
     keyFile = fopen(argv[1], "r");
-    //inputFile = fopen(argv[2], "r");
-    //outputFile = fopen(argv[3], "w");
+    inputFile = fopen(argv[2], "r");
+    outputFile = fopen(argv[3], "w");
     
     int kLength=0;
     int inputChar;
-    //checks next char in keyFile and if it is not EOF or over 256 then add one to length 
+    checks next char in keyFile and if it is not EOF or over 256 then add one to length 
     while((inputChar = fgetc(keyFile)) != EOF && kLength<256){
+        *(keyArray + i) = inputChar;
         kLength++;
-    }
-  
-    
-    printf("%i", kLength);        
-    
-}
-    /*
-    
-   // kLength = sizeof(key)/sizeof(int);
+    }   
     
     int i = 0;
     int j = 0;
@@ -70,18 +63,6 @@ void swap(char x, char y) {
     y = temp;
 }
 
-int initKey(FILE fileRead, char *keyArray) {
-    char tempCh;
-    int count = 0;
-    int i = 0;
-    while ((tempCh = fgetc(fileRead)) != EOF && i < 256) {
-        *(keyArray + i) = tempCh;
-        i++;
-        count++;
-    }
-    return count;
-}
-
 char generateKeyByte(char s[]) {
     static int i=0;
     static int j=0;
@@ -93,4 +74,3 @@ char generateKeyByte(char s[]) {
     int t = (S[i] + S[j]) % 256;
     return keyByte = S[t];
 }
-*/
