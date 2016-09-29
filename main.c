@@ -8,25 +8,35 @@ Team Members:
 #include <stdlib.h>
 #include <assert.h>
 
+void swap(char x, char y);
+void initKey(FILE fileRead, char *keyArray);
+char generateKeyByte(char s[]);
+
 char S[256];
 char T[256];
-int main(int argc, char *argv) {
+char key[256];
+
+int main(int argc, char *argv[]) {
     
     FILE *keyFile;
     FILE *inputFile;
     FILE *outputFile;
-    int key[];
-    int kLength;
-    
+   
+       
     if (argc < 3) printf("Input, output, and key files need to be specified\n");
-    
+        
     keyFile = fopen(argv[1], "r");
     inputFile = fopen(argv[2], "r");
     outputFile = fopen(argv[3], "w");
     
-    initKey(keyFile, key);
+    char *Pkey;
+    Pkey= &key[0]
+            
+    int kLength=0;
+    kLength = initKey(keyFile, Pkey);
     
-    kLength = sizeof(key)/sizeof(int);
+    printf("%i", kLength);
+   // kLength = sizeof(key)/sizeof(int);
     
     int i = 0;
     int j = 0;
@@ -44,6 +54,8 @@ int main(int argc, char *argv) {
     fclose(keyFile);
     fclose(inputFile);
     fclose(outputFile);
+    for(i=0; i<256; i++)
+    printf("%c\t %c\n", S[i], T[i]);
 }
 
 void swap(char x, char y) {
@@ -52,13 +64,16 @@ void swap(char x, char y) {
     y = temp;
 }
 
-void initKey(FILE fileRead, int[] keyArray) {
+int initKey(FILE fileRead, char *keyArray) {
     char tempCh;
+    int count = 0;
     int i = 0;
     while ((tempCh = fgetc(fileRead)) != EOF && i < 256) {
-        keyArray[i] = tempCh;
+        *(keyArray + i) = tempCh;
         i++;
+        count++;
     }
+    return count;
 }
 
 char generateKeyByte(char s[]) {
