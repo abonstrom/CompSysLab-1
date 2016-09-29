@@ -37,10 +37,6 @@ int main(int argc, char *argv[]) {
         kLength++;
     }   
     
-    for (int g = 0; g < kLength; g++) {
-        printf("%c", key[g]);
-    }
-    
     int i = 0;
     
     while (i < 256){
@@ -48,11 +44,7 @@ int main(int argc, char *argv[]) {
         T[i] = key[i % kLength];
         i++;
     }
-    
-    for (int l = 0; l < 256; l++){
-        printf("S = %c, T = %c\n", S[l], T[l]);
-    }
-    /*
+
     int j = 0;
     
     for (i = 0; i < 256; i++) {
@@ -83,6 +75,4 @@ char generateKeyByte(char s[]) {
     swap(S[i], S[j]);
     int t = (S[i] + S[j]) % 256;
     return keyByte = S[t];
-}
-     * */
 }
