@@ -23,23 +23,24 @@ int main(int argc, char *argv[]) {
     FILE *outputFile;
    
        
-    if (argc < 3) printf("Input, output, and key files need to be specified\n");
+   // if (argc < 3) printf("Input, output, and key files need to be specified\n");
         
     keyFile = fopen(argv[1], "r");
-    inputFile = fopen(argv[2], "r");
-    outputFile = fopen(argv[3], "w");
+    //inputFile = fopen(argv[2], "r");
+    //outputFile = fopen(argv[3], "w");
     
     int kLength=0;
+    int inputChar;
     //checks next char in keyFile and if it is not EOF or over 256 then add one to length 
-    while((int inputChar = fgetc(keyFile)) != EOF && kLength<256){
+    while((inputChar = fgetc(keyFile)) != EOF && kLength<256){
         kLength++;
     }
   
     
-            
+    printf("%i", kLength);        
     
-   
-    
+}
+    /*
     
    // kLength = sizeof(key)/sizeof(int);
     
@@ -92,3 +93,4 @@ char generateKeyByte(char s[]) {
     int t = (S[i] + S[j]) % 256;
     return keyByte = S[t];
 }
+*/
