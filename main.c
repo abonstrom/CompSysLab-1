@@ -22,16 +22,17 @@ int main(int argc, char *argv[]) {
     FILE *inputFile;
     FILE *outputFile;
    
-       
-   //if (argc < 3) printf("Input, output, and key files need to be specified\n");
-        
+    //assertion to make sure that there are enough inputs on the command line
+    assert (argc == 3);
+    
     keyFile = fopen(argv[1], "r");
     inputFile = fopen(argv[2], "r");
     outputFile = fopen(argv[3], "w");
     
     int kLength = 0;
     int inputChar;
-    //checks next char in keyFile and if it is not EOF or over 256 then add one to length 
+    //checks next char in keyFile and if it is not EOF or over 256 then add 
+    //one to length 
     while((inputChar = fgetc(keyFile)) != EOF && kLength<256){
         key[kLength] = inputChar;
         kLength++;
@@ -54,6 +55,7 @@ int main(int argc, char *argv[]) {
     
     encryptData(inputFile, outputFile);
     
+    //close all the file streams
     fclose(keyFile);
     fclose(inputFile);
     fclose(outputFile);
@@ -77,13 +79,18 @@ char generateKeyByte(char s[]) {
     return keyByte = S[t];
 }
 
+//method to encrypt the data using the newly created S[] array
 void encryptData(FILE *input, FILE *output){
     char inChar;
     char outChar;
+    //variable that will hold the next value in the keyStream, will be ex-ored 
+    //with the input character to create the encrypted character
     char keyByte;
     while ((inChar = fgetc(input)) != EOF) {
+        //generates the next keyByte from the keyStream
         keyByte = generateKeyByte(S);
         outChar = keyByte ^ inChar;
+        //adds the new encrypted char to the output file
         fputc(outChar, output);
-    } 
+    }
 }
